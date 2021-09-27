@@ -26,4 +26,4 @@ Content in the first column | Content in the second column
                         // compilation. The #ifndef means "if not defined".
 # define F_CPU 16000000 // CPU frequency in Hz required for delay
 #endif                  // The #ifndef directive must be closed by #endif
-```c
+```
