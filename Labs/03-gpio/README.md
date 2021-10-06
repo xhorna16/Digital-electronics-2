@@ -39,7 +39,7 @@ int main(void)
     uint16_t result;    // result = x^2 + 2xy + y^2
 
     result = x*x;
-    result += 2*x*y;
+    	result += 2*x*y;
 	result += y*y;
     return result;
 }
