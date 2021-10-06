@@ -8,7 +8,7 @@
 | `uint16_t` | 8 | 0...65535 | Unsigned 16-bit integer |
 | `int16_t`  | 16 | -32768...+32767 | Signed 16-bit integer |
 | `float`    | 32 | -3.4e+38, ..., 3.4e+38 | Single-precision floating-point |
-| `void`     |  |  |  |
+| `void`     | 0 |  |  |
 
 2. Any function in C contains a declaration (function prototype), a definition (block of code, body of the function); each declared function can be executed (called). Study [this article](https://www.programiz.com/c-programming/c-user-defined-functions) and complete the missing sections in the following user defined function declaration, definition, and call.
 
@@ -16,7 +16,7 @@
 #include <avr/io.h>
 
 // Function declaration (prototype)
-uint16_t calculate(uint8_t, uint8_t);
+uint16_t calculate(uint8_t, uint8_t); //jak vypadá
 
 int main(void)
 {
@@ -34,7 +34,7 @@ int main(void)
 }
 
 // Function definition (body)
-...      calculate(uint8_t x, uint8_t y)
+...      calculate(uint8_t x, uint8_t y) //jak se chová
 {
     uint16_t result;    // result = x^2 + 2xy + y^2
 
