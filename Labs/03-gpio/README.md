@@ -1,3 +1,4 @@
+https://github.com/xhorna16/Digital-electronics-2
 ## Preparation tasks
 1. Fill in the following table and enter the number of bits and numeric range for the selected data types defined by C.
 
@@ -44,3 +45,38 @@ int main(void)
     return result;
 }
 ```
+## GPIO Library
+Deklarace funkce oznamuje samotnou přítomnost funkce a vyjadřuje, jaké druhy proměnných tvoří vstupy a výstupy funkce.
+Definice funkce popisuje chování funkce, tj. její práci se zadanými vstupními údaji, jsou-li nějaké, např. matematickým vztahem.
+## Part of C code
+```c
+int main(void)
+{
+    // Green LED at port B
+    GPIO_config_output(&DDRB, LED_GREEN); // nastavim vystup // proc je tam & ??
+    GPIO_write_low(&PORTB, LED_GREEN); // nastavim na nulu
+
+    // Configure the second LED at port C
+    GPIO_config_output(&DDRC, LED2); // nastavim vystup
+    GPIO_write_high(&PORTC, LED2);
+
+    // Configure Push button at port D and enable internal pull-up resistor
+    GPIO_config_input_pullup(&DDRD, BUTTON);
+
+    // Infinite loop
+    while (1)
+    {
+        // Pause several milliseconds
+        //_delay_ms(BLINK_DELAY);
+        if (GPIO_read(&PIND, BUTTON) == 0) {
+	        _delay_ms(BLINK_DELAY);
+	        GPIO_toggle(&PORTC, LED_RED);
+	        GPIO_toggle(&PORTB, LED_GREEN);
+        }
+
+    // Will never reach this
+    return 0;
+    }
+```
+## Traffic light
+![schema-03](schema-03.jpg)
