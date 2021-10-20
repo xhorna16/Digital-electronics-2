@@ -1,3 +1,4 @@
+https://github.com/xhorna16/Digital-electronics-2/blob/main/Labs/04-interrupts/README.md
 ## Preparation tasks
 &nbsp;
 
