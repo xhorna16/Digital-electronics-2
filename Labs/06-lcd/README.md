@@ -28,9 +28,25 @@ https://github.com/xhorna16/Digital-electronics-2/edit/main/Labs/06-lcd/README.m
 ```c
 /* Variables ---------------------------------------------------------*/
 // Custom character definition
-uint8_t customChar[16] = {
-    // WRITE YOUR CODE HERE
-
+byte customChar[8] = {
+	0b11111,
+	0b11111,
+	0b11111,
+	0b11111,
+	0b11111,
+	0b11111,
+	0b11111,
+	0b11111
+};
+byte customChar[8] = {
+	0b00100,
+	0b00100,
+	0b11111,
+	0b00100,
+	0b00100,
+	0b00000,
+	0b11111,
+	0b00000
 };
 ```
 
