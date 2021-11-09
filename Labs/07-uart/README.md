@@ -1,3 +1,4 @@
+https://github.com/xhorna16/Digital-electronics-2/blob/main/Labs/07-uart/README.md
 ## Analog to digital conversion
 | **Push button** | **PC0[A0] voltage** | **ADC value (calculated)** | **ADC value (measured)** |
    | :-: | :-: | :-: | :-: |
