@@ -1,0 +1,477 @@
+
+i2c.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000020  00800100  000002de  00000372  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000002de  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000045  00800120  00800120  00000392  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000392  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  000003c4  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 000000c0  00000000  00000000  00000404  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000beb  00000000  00000000  000004c4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000087a  00000000  00000000  000010af  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   00000611  00000000  00000000  00001929  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  000001d0  00000000  00000000  00001f3c  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    000004fe  00000000  00000000  0000210c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000478  00000000  00000000  0000260a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 000000a8  00000000  00000000  00002a82  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 6c 00 	jmp	0xd8	; 0xd8 <__vector_13>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 d8 00 	jmp	0x1b0	; 0x1b0 <__vector_18>
+  4c:	0c 94 06 01 	jmp	0x20c	; 0x20c <__vector_19>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	ee ed       	ldi	r30, 0xDE	; 222
+  7c:	f2 e0       	ldi	r31, 0x02	; 2
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a0 32       	cpi	r26, 0x20	; 32
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a0 e2       	ldi	r26, 0x20	; 32
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a5 36       	cpi	r26, 0x65	; 101
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 53 00 	call	0xa6	; 0xa6 <main>
+  9e:	0c 94 6d 01 	jmp	0x2da	; 0x2da <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <main>:
+ * Returns:  none
+ **********************************************************************/
+int main(void)
+{
+    // Initialize I2C (TWI)
+    twi_init();
+  a6:	0e 94 a7 00 	call	0x14e	; 0x14e <twi_init>
+
+    // Initialize UART to asynchronous, 8N1, 9600
+    uart_init(UART_BAUD_SELECT(9600, F_CPU));
+  aa:	87 e6       	ldi	r24, 0x67	; 103
+  ac:	90 e0       	ldi	r25, 0x00	; 0
+  ae:	0e 94 30 01 	call	0x260	; 0x260 <uart_init>
+
+    // Configure 16-bit Timer/Counter1 to update FSM
+    // Set prescaler to 33 ms and enable interrupt
+    TIM1_overflow_33ms();
+  b2:	e1 e8       	ldi	r30, 0x81	; 129
+  b4:	f0 e0       	ldi	r31, 0x00	; 0
+  b6:	80 81       	ld	r24, Z
+  b8:	8a 7f       	andi	r24, 0xFA	; 250
+  ba:	80 83       	st	Z, r24
+  bc:	80 81       	ld	r24, Z
+  be:	82 60       	ori	r24, 0x02	; 2
+  c0:	80 83       	st	Z, r24
+    TIM1_overflow_interrupt_enable();
+  c2:	ef e6       	ldi	r30, 0x6F	; 111
+  c4:	f0 e0       	ldi	r31, 0x00	; 0
+  c6:	80 81       	ld	r24, Z
+  c8:	81 60       	ori	r24, 0x01	; 1
+  ca:	80 83       	st	Z, r24
+
+    // Enables interrupts by setting the global interrupt mask
+    sei();
+  cc:	78 94       	sei
+
+    // Put strings to ringbuffer for transmitting via UART
+    uart_puts("\r\nScan I2C-bus for devices:\r\n");
+  ce:	82 e0       	ldi	r24, 0x02	; 2
+  d0:	91 e0       	ldi	r25, 0x01	; 1
+  d2:	0e 94 5e 01 	call	0x2bc	; 0x2bc <uart_puts>
+  d6:	ff cf       	rjmp	.-2      	; 0xd6 <main+0x30>
+
+000000d8 <__vector_13>:
+ * Function: Timer/Counter1 overflow interrupt
+ * Purpose:  Update Finite State Machine and test I2C slave addresses 
+ *           between 8 and 119.
+ **********************************************************************/
+ISR(TIMER1_OVF_vect)
+{
+  d8:	1f 92       	push	r1
+  da:	0f 92       	push	r0
+  dc:	0f b6       	in	r0, 0x3f	; 63
+  de:	0f 92       	push	r0
+  e0:	11 24       	eor	r1, r1
+  e2:	2f 93       	push	r18
+  e4:	3f 93       	push	r19
+  e6:	4f 93       	push	r20
+  e8:	5f 93       	push	r21
+  ea:	6f 93       	push	r22
+  ec:	7f 93       	push	r23
+  ee:	8f 93       	push	r24
+  f0:	9f 93       	push	r25
+  f2:	af 93       	push	r26
+  f4:	bf 93       	push	r27
+  f6:	ef 93       	push	r30
+  f8:	ff 93       	push	r31
+    static uint8_t addr = 7;            // I2C slave address
+    uint8_t result = 1;                 // ACK result from the bus
+    char uart_string[2] = "00"; // String for converting numbers by itoa()
+
+    // FSM
+    switch (state)
+  fa:	80 91 01 01 	lds	r24, 0x0101	; 0x800101 <state.1964>
+  fe:	82 30       	cpi	r24, 0x02	; 2
+ 100:	51 f0       	breq	.+20     	; 0x116 <__vector_13+0x3e>
+ 102:	83 30       	cpi	r24, 0x03	; 3
+ 104:	99 f0       	breq	.+38     	; 0x12c <__vector_13+0x54>
+ 106:	81 30       	cpi	r24, 0x01	; 1
+ 108:	71 f4       	brne	.+28     	; 0x126 <__vector_13+0x4e>
+    {
+    // Increment I2C slave address
+    case STATE_IDLE:
+        addr++;
+ 10a:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_start>
+ 10e:	8f 5f       	subi	r24, 0xFF	; 255
+ 110:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
+        // If slave address is between 8 and 119 then move to SEND state
+
+        break;
+ 114:	0b c0       	rjmp	.+22     	; 0x12c <__vector_13+0x54>
+        // |      from Master       | from Slave |
+        // +------------------------+------------+
+        // | 7  6  5  4  3  2  1  0 |     ACK    |
+        // |a6 a5 a4 a3 a2 a1 a0 R/W|   result   |
+        // +------------------------+------------+
+        result = twi_start((addr<<1) + TWI_WRITE);
+ 116:	80 91 00 01 	lds	r24, 0x0100	; 0x800100 <__data_start>
+ 11a:	88 0f       	add	r24, r24
+ 11c:	0e 94 b6 00 	call	0x16c	; 0x16c <twi_start>
+        twi_stop();
+ 120:	0e 94 d4 00 	call	0x1a8	; 0x1a8 <twi_stop>
+        /* Test result from I2C bus. If it is 0 then move to ACK state, 
+         * otherwise move to IDLE */
+
+        break;
+ 124:	03 c0       	rjmp	.+6      	; 0x12c <__vector_13+0x54>
+
+        break;
+
+    // If something unexpected happens then move to IDLE
+    default:
+        state = STATE_IDLE;
+ 126:	81 e0       	ldi	r24, 0x01	; 1
+ 128:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <state.1964>
+        break;
+    }
+ 12c:	ff 91       	pop	r31
+ 12e:	ef 91       	pop	r30
+ 130:	bf 91       	pop	r27
+ 132:	af 91       	pop	r26
+ 134:	9f 91       	pop	r25
+ 136:	8f 91       	pop	r24
+ 138:	7f 91       	pop	r23
+ 13a:	6f 91       	pop	r22
+ 13c:	5f 91       	pop	r21
+ 13e:	4f 91       	pop	r20
+ 140:	3f 91       	pop	r19
+ 142:	2f 91       	pop	r18
+ 144:	0f 90       	pop	r0
+ 146:	0f be       	out	0x3f, r0	; 63
+ 148:	0f 90       	pop	r0
+ 14a:	1f 90       	pop	r1
+ 14c:	18 95       	reti
+
+0000014e <twi_init>:
+{
+    TWCR = _BV(TWINT) | _BV(TWEN);
+
+    while ((TWCR & _BV(TWINT)) == 0);
+    return (TWDR);
+}
+ 14e:	87 b1       	in	r24, 0x07	; 7
+ 150:	8f 7c       	andi	r24, 0xCF	; 207
+ 152:	87 b9       	out	0x07, r24	; 7
+ 154:	88 b1       	in	r24, 0x08	; 8
+ 156:	80 63       	ori	r24, 0x30	; 48
+ 158:	88 b9       	out	0x08, r24	; 8
+ 15a:	e9 eb       	ldi	r30, 0xB9	; 185
+ 15c:	f0 e0       	ldi	r31, 0x00	; 0
+ 15e:	80 81       	ld	r24, Z
+ 160:	8c 7f       	andi	r24, 0xFC	; 252
+ 162:	80 83       	st	Z, r24
+ 164:	88 e9       	ldi	r24, 0x98	; 152
+ 166:	80 93 b8 00 	sts	0x00B8, r24	; 0x8000b8 <__DATA_REGION_ORIGIN__+0x58>
+ 16a:	08 95       	ret
+
+0000016c <twi_start>:
+ 16c:	94 ea       	ldi	r25, 0xA4	; 164
+ 16e:	90 93 bc 00 	sts	0x00BC, r25	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 172:	ec eb       	ldi	r30, 0xBC	; 188
+ 174:	f0 e0       	ldi	r31, 0x00	; 0
+ 176:	90 81       	ld	r25, Z
+ 178:	99 23       	and	r25, r25
+ 17a:	ec f7       	brge	.-6      	; 0x176 <twi_start+0xa>
+ 17c:	80 93 bb 00 	sts	0x00BB, r24	; 0x8000bb <__DATA_REGION_ORIGIN__+0x5b>
+ 180:	84 e8       	ldi	r24, 0x84	; 132
+ 182:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 186:	ec eb       	ldi	r30, 0xBC	; 188
+ 188:	f0 e0       	ldi	r31, 0x00	; 0
+ 18a:	80 81       	ld	r24, Z
+ 18c:	88 23       	and	r24, r24
+ 18e:	ec f7       	brge	.-6      	; 0x18a <twi_start+0x1e>
+ 190:	90 91 b9 00 	lds	r25, 0x00B9	; 0x8000b9 <__DATA_REGION_ORIGIN__+0x59>
+ 194:	98 7f       	andi	r25, 0xF8	; 248
+ 196:	98 31       	cpi	r25, 0x18	; 24
+ 198:	29 f0       	breq	.+10     	; 0x1a4 <twi_start+0x38>
+ 19a:	81 e0       	ldi	r24, 0x01	; 1
+ 19c:	90 34       	cpi	r25, 0x40	; 64
+ 19e:	19 f4       	brne	.+6      	; 0x1a6 <twi_start+0x3a>
+ 1a0:	80 e0       	ldi	r24, 0x00	; 0
+ 1a2:	08 95       	ret
+ 1a4:	80 e0       	ldi	r24, 0x00	; 0
+ 1a6:	08 95       	ret
+
+000001a8 <twi_stop>:
+ * Purpose:  Generates stop condition on TWI bus.
+ * Returns:  none
+ **********************************************************************/
+void twi_stop(void)
+{
+    TWCR = _BV(TWINT) | _BV(TWSTO) | _BV(TWEN);
+ 1a8:	84 e9       	ldi	r24, 0x94	; 148
+ 1aa:	80 93 bc 00 	sts	0x00BC, r24	; 0x8000bc <__DATA_REGION_ORIGIN__+0x5c>
+ 1ae:	08 95       	ret
+
+000001b0 <__vector_18>:
+    /* store buffer index */
+    UART_RxTail = tmptail;
+
+    UART_LastRxError = 0;
+    return (lastRxError << 8) + data;
+}/* uart_getc */
+ 1b0:	1f 92       	push	r1
+ 1b2:	0f 92       	push	r0
+ 1b4:	0f b6       	in	r0, 0x3f	; 63
+ 1b6:	0f 92       	push	r0
+ 1b8:	11 24       	eor	r1, r1
+ 1ba:	2f 93       	push	r18
+ 1bc:	8f 93       	push	r24
+ 1be:	9f 93       	push	r25
+ 1c0:	ef 93       	push	r30
+ 1c2:	ff 93       	push	r31
+ 1c4:	80 91 c0 00 	lds	r24, 0x00C0	; 0x8000c0 <__DATA_REGION_ORIGIN__+0x60>
+ 1c8:	20 91 c6 00 	lds	r18, 0x00C6	; 0x8000c6 <__DATA_REGION_ORIGIN__+0x66>
+ 1cc:	8c 71       	andi	r24, 0x1C	; 28
+ 1ce:	e0 91 22 01 	lds	r30, 0x0122	; 0x800122 <UART_RxHead>
+ 1d2:	ef 5f       	subi	r30, 0xFF	; 255
+ 1d4:	ef 71       	andi	r30, 0x1F	; 31
+ 1d6:	90 91 21 01 	lds	r25, 0x0121	; 0x800121 <UART_RxTail>
+ 1da:	e9 17       	cp	r30, r25
+ 1dc:	39 f0       	breq	.+14     	; 0x1ec <__vector_18+0x3c>
+ 1de:	e0 93 22 01 	sts	0x0122, r30	; 0x800122 <UART_RxHead>
+ 1e2:	f0 e0       	ldi	r31, 0x00	; 0
+ 1e4:	eb 5d       	subi	r30, 0xDB	; 219
+ 1e6:	fe 4f       	sbci	r31, 0xFE	; 254
+ 1e8:	20 83       	st	Z, r18
+ 1ea:	01 c0       	rjmp	.+2      	; 0x1ee <__vector_18+0x3e>
+ 1ec:	82 e0       	ldi	r24, 0x02	; 2
+ 1ee:	90 91 20 01 	lds	r25, 0x0120	; 0x800120 <__data_end>
+ 1f2:	89 2b       	or	r24, r25
+ 1f4:	80 93 20 01 	sts	0x0120, r24	; 0x800120 <__data_end>
+ 1f8:	ff 91       	pop	r31
+ 1fa:	ef 91       	pop	r30
+ 1fc:	9f 91       	pop	r25
+ 1fe:	8f 91       	pop	r24
+ 200:	2f 91       	pop	r18
+ 202:	0f 90       	pop	r0
+ 204:	0f be       	out	0x3f, r0	; 63
+ 206:	0f 90       	pop	r0
+ 208:	1f 90       	pop	r1
+ 20a:	18 95       	reti
+
+0000020c <__vector_19>:
+ 20c:	1f 92       	push	r1
+ 20e:	0f 92       	push	r0
+ 210:	0f b6       	in	r0, 0x3f	; 63
+ 212:	0f 92       	push	r0
+ 214:	11 24       	eor	r1, r1
+ 216:	8f 93       	push	r24
+ 218:	9f 93       	push	r25
+ 21a:	ef 93       	push	r30
+ 21c:	ff 93       	push	r31
+ 21e:	90 91 24 01 	lds	r25, 0x0124	; 0x800124 <UART_TxHead>
+ 222:	80 91 23 01 	lds	r24, 0x0123	; 0x800123 <UART_TxTail>
+ 226:	98 17       	cp	r25, r24
+ 228:	69 f0       	breq	.+26     	; 0x244 <__vector_19+0x38>
+ 22a:	e0 91 23 01 	lds	r30, 0x0123	; 0x800123 <UART_TxTail>
+ 22e:	ef 5f       	subi	r30, 0xFF	; 255
+ 230:	ef 71       	andi	r30, 0x1F	; 31
+ 232:	e0 93 23 01 	sts	0x0123, r30	; 0x800123 <UART_TxTail>
+ 236:	f0 e0       	ldi	r31, 0x00	; 0
+ 238:	eb 5b       	subi	r30, 0xBB	; 187
+ 23a:	fe 4f       	sbci	r31, 0xFE	; 254
+ 23c:	80 81       	ld	r24, Z
+ 23e:	80 93 c6 00 	sts	0x00C6, r24	; 0x8000c6 <__DATA_REGION_ORIGIN__+0x66>
+ 242:	05 c0       	rjmp	.+10     	; 0x24e <__vector_19+0x42>
+ 244:	e1 ec       	ldi	r30, 0xC1	; 193
+ 246:	f0 e0       	ldi	r31, 0x00	; 0
+ 248:	80 81       	ld	r24, Z
+ 24a:	8f 7d       	andi	r24, 0xDF	; 223
+ 24c:	80 83       	st	Z, r24
+ 24e:	ff 91       	pop	r31
+ 250:	ef 91       	pop	r30
+ 252:	9f 91       	pop	r25
+ 254:	8f 91       	pop	r24
+ 256:	0f 90       	pop	r0
+ 258:	0f be       	out	0x3f, r0	; 63
+ 25a:	0f 90       	pop	r0
+ 25c:	1f 90       	pop	r1
+ 25e:	18 95       	reti
+
+00000260 <uart_init>:
+ 260:	10 92 24 01 	sts	0x0124, r1	; 0x800124 <UART_TxHead>
+ 264:	10 92 23 01 	sts	0x0123, r1	; 0x800123 <UART_TxTail>
+ 268:	10 92 22 01 	sts	0x0122, r1	; 0x800122 <UART_RxHead>
+ 26c:	10 92 21 01 	sts	0x0121, r1	; 0x800121 <UART_RxTail>
+ 270:	99 23       	and	r25, r25
+ 272:	1c f4       	brge	.+6      	; 0x27a <uart_init+0x1a>
+ 274:	22 e0       	ldi	r18, 0x02	; 2
+ 276:	20 93 c0 00 	sts	0x00C0, r18	; 0x8000c0 <__DATA_REGION_ORIGIN__+0x60>
+ 27a:	90 78       	andi	r25, 0x80	; 128
+ 27c:	90 93 c5 00 	sts	0x00C5, r25	; 0x8000c5 <__DATA_REGION_ORIGIN__+0x65>
+ 280:	80 93 c4 00 	sts	0x00C4, r24	; 0x8000c4 <__DATA_REGION_ORIGIN__+0x64>
+ 284:	88 e9       	ldi	r24, 0x98	; 152
+ 286:	80 93 c1 00 	sts	0x00C1, r24	; 0x8000c1 <__DATA_REGION_ORIGIN__+0x61>
+ 28a:	86 e0       	ldi	r24, 0x06	; 6
+ 28c:	80 93 c2 00 	sts	0x00C2, r24	; 0x8000c2 <__DATA_REGION_ORIGIN__+0x62>
+ 290:	08 95       	ret
+
+00000292 <uart_putc>:
+void uart_putc(unsigned char data)
+{
+    unsigned char tmphead;
+
+
+    tmphead = (UART_TxHead + 1) & UART_TX_BUFFER_MASK;
+ 292:	20 91 24 01 	lds	r18, 0x0124	; 0x800124 <UART_TxHead>
+ 296:	2f 5f       	subi	r18, 0xFF	; 255
+ 298:	2f 71       	andi	r18, 0x1F	; 31
+
+    while (tmphead == UART_TxTail)
+ 29a:	90 91 23 01 	lds	r25, 0x0123	; 0x800123 <UART_TxTail>
+ 29e:	29 17       	cp	r18, r25
+ 2a0:	e1 f3       	breq	.-8      	; 0x29a <uart_putc+0x8>
+    {
+        ;/* wait for free space in buffer */
+    }
+
+    UART_TxBuf[tmphead] = data;
+ 2a2:	e2 2f       	mov	r30, r18
+ 2a4:	f0 e0       	ldi	r31, 0x00	; 0
+ 2a6:	eb 5b       	subi	r30, 0xBB	; 187
+ 2a8:	fe 4f       	sbci	r31, 0xFE	; 254
+ 2aa:	80 83       	st	Z, r24
+    UART_TxHead         = tmphead;
+ 2ac:	20 93 24 01 	sts	0x0124, r18	; 0x800124 <UART_TxHead>
+
+    /* enable UDRE interrupt */
+    UART0_CONTROL |= _BV(UART0_UDRIE);
+ 2b0:	e1 ec       	ldi	r30, 0xC1	; 193
+ 2b2:	f0 e0       	ldi	r31, 0x00	; 0
+ 2b4:	80 81       	ld	r24, Z
+ 2b6:	80 62       	ori	r24, 0x20	; 32
+ 2b8:	80 83       	st	Z, r24
+ 2ba:	08 95       	ret
+
+000002bc <uart_puts>:
+ * Purpose:  transmit string to UART
+ * Input:    string to be transmitted
+ * Returns:  none
+ **************************************************************************/
+void uart_puts(const char *s)
+{
+ 2bc:	cf 93       	push	r28
+ 2be:	df 93       	push	r29
+ 2c0:	ec 01       	movw	r28, r24
+    while (*s)
+ 2c2:	88 81       	ld	r24, Y
+ 2c4:	88 23       	and	r24, r24
+ 2c6:	31 f0       	breq	.+12     	; 0x2d4 <uart_puts+0x18>
+ 2c8:	21 96       	adiw	r28, 0x01	; 1
+        uart_putc(*s++);
+ 2ca:	0e 94 49 01 	call	0x292	; 0x292 <uart_putc>
+ * Input:    string to be transmitted
+ * Returns:  none
+ **************************************************************************/
+void uart_puts(const char *s)
+{
+    while (*s)
+ 2ce:	89 91       	ld	r24, Y+
+ 2d0:	81 11       	cpse	r24, r1
+ 2d2:	fb cf       	rjmp	.-10     	; 0x2ca <uart_puts+0xe>
+        uart_putc(*s++);
+}/* uart_puts */
+ 2d4:	df 91       	pop	r29
+ 2d6:	cf 91       	pop	r28
+ 2d8:	08 95       	ret
+
+000002da <_exit>:
+ 2da:	f8 94       	cli
+
+000002dc <__stop_program>:
+ 2dc:	ff cf       	rjmp	.-2      	; 0x2dc <__stop_program>
