@@ -7,16 +7,6 @@ ISR(TIMER1_OVF_vect)
     uint8_t result = 1;                 // ACK result from the bus
     char uart_string_dec[] = "000"; // String for converting numbers by itoa()
     char uart_string_bin[] = "0000000";
-    char uart_humidity_integer[] = "000";
-    char uart_humidity_fractional[] = "000";
-    char uart_temperature_integer[] = "000";
-    char uart_temperature_fractional[] = "000";
-    char uart_checksum[] = "000";
-    static uint8_t humidity_integer = 0;
-    static uint8_t humidity_fractional = 0;
-    static uint8_t temperature_integer = 0;
-    static uint8_t temperature_fractional = 0;
-    static uint8_t checksum = 0;
     // FSM
     switch (state)
     {
@@ -43,15 +33,16 @@ ISR(TIMER1_OVF_vect)
         // |a6 a5 a4 a3 a2 a1 a0 R/W|   result   |
         // +------------------------+------------+
         result = twi_start((addr<<1) + TWI_WRITE);
-        twi_stop();
         /* Test result from I2C bus. If it is 0 then move to ACK state, 
          * otherwise move to IDLE */
-        if (result == 0) {
-            state = STATE_ACK;
-        }
-        else {
+        if (result == 1) {
             state = STATE_IDLE;
-        }
+        }            
+        if (result == 0) {
+            data = twi_read_ack();
+            state = STATE_ACK;
+        }            
+        twi_stop();        
         break;
 
     // A module connected to the bus was found
@@ -67,7 +58,6 @@ ISR(TIMER1_OVF_vect)
         uart_puts("\n\r");
         
         state = STATE_IDLE;
-        break;
         break;
 
     // If something unexpected happens then move to IDLE
