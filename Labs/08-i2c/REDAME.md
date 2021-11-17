@@ -1,4 +1,5 @@
 https://github.com/xhorna16/Digital-electronics-2/edit/main/Labs/08-i2c/REDAME.md
+```c
 ISR(TIMER1_OVF_vect)
 {
     static state_t state = STATE_IDLE;  // Current state of the FSM
@@ -75,3 +76,4 @@ ISR(TIMER1_OVF_vect)
         break;
     }
 }
+```
