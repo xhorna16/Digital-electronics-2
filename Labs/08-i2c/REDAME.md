@@ -1,4 +1,7 @@
 https://github.com/xhorna16/Digital-electronics-2/edit/main/Labs/08-i2c/REDAME.md
+## Pinout
+![1.jpg](1.jpg)
+## Code
 ```c
 ISR(TIMER1_OVF_vect)
 {
@@ -67,3 +70,5 @@ ISR(TIMER1_OVF_vect)
     }
 }
 ```
+## Weather station
+![2.jpg](2.jpg)
